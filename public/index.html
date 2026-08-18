@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Messenger</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-glow"></div>
+
+  <div id="app">
+    <!-- AUTH -->
+    <div id="auth-screen" class="screen active">
+      <div class="auth-card glass">
+        <div class="logo">
+          <div class="logo-icon">◈</div>
+          <div class="logo-text">Crypto Messenger</div>
+          <div class="logo-sub">End-to-End Encrypted</div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="login">Sign In</button>
+          <button class="tab-btn" data-tab="register">Sign Up</button>
+        </div>
+
+        <div id="login-form" class="tab-content active">
+          <div class="input-group">
+            <label>Username</label>
+            <input type="text" id="login-username" placeholder="your_login" autocomplete="username">
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+          </div>
+          <button id="btn-login" class="btn-primary">Enter</button>
+          <p id="login-error" class="error-text"></p>
+        </div>
+
+        <div id="register-form" class="tab-content">
+          <div class="input-group">
+            <label>Username</label>
+            <input type="text" id="reg-username" placeholder="choose_login" autocomplete="off">
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="reg-password" placeholder="••••••••" autocomplete="new-password">
+          </div>
+          <button id="btn-register" class="btn-primary">Create Account</button>
+          <p id="reg-error" class="error-text"></p>
+          <p class="hint-text">ECDH P-256 keys generated on your device. Private key never leaves.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div id="main-screen" class="screen">
+      <div class="sidebar glass">
+        <div class="sidebar-header">
+          <div class="user-info">
+            <div class="avatar">◈</div>
+            <span id="current-user">user</span>
+          </div>
+          <button id="btn-logout" class="btn-icon" title="Exit">✕</button>
+        </div>
+
+        <div class="sidebar-content">
+          <div class="section-title">Contacts</div>
+          <div id="user-list" class="user-list"></div>
+
+          <div class="section-title">Conversations</div>
+          <div id="dm-list" class="dm-list"></div>
+        </div>
+      </div>
+
+      <div class="chat-area">
+        <div class="chat-header glass">
+          <span id="chat-title">Select a contact</span>
+          <span class="enc-badge">🔒 E2EE</span>
+        </div>
+
+        <div id="messages" class="messages"></div>
+
+        <div class="input-area glass">
+          <input type="file" id="file-input" accept="*/*" style="display:none">
+          <button id="btn-attach" class="btn-icon attach" title="Send file and image (max 100MB)">📎</button>
+          <input type="text" id="message-input" placeholder="Write a message..." autocomplete="off">
+          <button id="btn-send" class="btn-send">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
