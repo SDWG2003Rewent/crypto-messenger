@@ -139,4 +139,4 @@ crypto-messenger/
 
 ## Лицензия
 
-MIT — делай что хочешь.
+Apache License 2.0.
